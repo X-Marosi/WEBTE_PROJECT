@@ -8,27 +8,40 @@ html {
 
 .grid {
     display: grid;
-    gap: 1px;
     grid-template-columns: repeat(3, 1fr);
+    gap: 0.1rem;
     margin: auto;
-    width: 300px;
-    height: 300px;
-}
-.cell{
-    background: #b9b9b9;
-    width: 100px;
-    height: 100px;
+    width: 15.2rem;
+    height: 15.2rem;
+    border: gray 30px solid;
+    background: #ececec;
 
 }
+
+.cell{
+    width: 5rem;
+    height: 5rem;
+}
+
+
 
 .b-square {
-    background: #009dff;
+    background: #b67b57;
     cursor: move;
+    width: 4.9rem;
+    height: 4.9rem;
+    border-radius: 1rem;
+    margin: auto;
 }
 
 .r-square {
-    background: #ff3535;
+    background: #3b2828;
     cursor: not-allowed;
+}
+.cell.dragged {
+    user-select: none;
+    opacity: 1;
+    cursor: default;
 }
 
 /* Drag and Drop Related Styling
@@ -60,3 +73,4 @@ html {
 }
 
 */
+

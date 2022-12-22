@@ -47,15 +47,11 @@ function drop(event) {
     //const draggableElementData = event.dataTransfer.getData("text"); // Get the dragged data. This method will return any data that was set to the same type in the setData() method
     //const droppableElementData = event.target.getAttribute("data-draggable-id");
 
-
+    let targetId = parseInt(event.target.id);
+    let originId = parseInt(dragOrigin.id);
 
     if (dragOrigin.classList.contains("b-square")) {
-
-        if (parseInt(event.target.id) === parseInt(dragOrigin.id) + 1 || parseInt((event.target.id)) === parseInt(dragOrigin.id) - 1 || parseInt((event.target.id)) === parseInt(dragOrigin.id) + rowSize + 1 || parseInt((event.target.id)) === parseInt(dragOrigin.id) - rowSize - 1) {
-
-
-
-
+        if (targetId === originId + 1 || targetId === originId - 1 ||targetId === originId + rowSize + 1 || targetId === originId - rowSize - 1) {
             event.target.classList.add("b-square");
             event.target.setAttribute("draggable", "true");
             dragOrigin.classList.remove("b-square");
