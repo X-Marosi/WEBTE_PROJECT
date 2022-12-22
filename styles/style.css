@@ -1,18 +1,56 @@
+
 html {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+
+.cell {
+    height: 100px;
+    width: 100px;
+    background: #b9b9b9;
 }
 
 .grid {
     display: grid;
     gap: 1px;
     grid-template-columns: repeat(3, 1fr);
-    height: 500px;
-    width: 500px;
-    margin: 0 auto;
+    margin: auto;
+    width: 300px;
+    height: 300px;
 }
 
-div > div {
-    padding: 10px;
-    background-color: #e7e7e7;
+.b-square {
+    background-color: #00b7ff;
 }
+
+/* Drag and Drop Related Styling
+
+
+.droppable.dropped {
+    border-style: solid;
+    color: #fff;
+}
+.droppable.dropped span {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+}
+.droppable.dropped i {
+    pointer-events: none;
+}
+.draggable.dragged {
+    user-select: none;
+    opacity: 0.1;
+    cursor: default;
+}
+.draggable.dragged:hover {
+    opacity: 0.1;
+}
+
+@media (max-width: 600px) {
+    html { font-size: 14px; }
+    .draggable-elements { margin: 1.5rem; }
+}
+
+*/
