@@ -1,5 +1,6 @@
 const cells = document.querySelectorAll(".cell");
 let dragOrigin;
+let rowSize = 3;
 
 cells.forEach(elem => {
     elem.addEventListener("dragstart", dragStart); // Fires as soon as the user starts dragging an item - This is where we can define the drag data
@@ -16,7 +17,7 @@ cells.forEach(elem => {
 //Events fired on the drag target
 
 function dragStart(event) {
-    event.dataTransfer.setData("text", event.target.id);
+    //event.dataTransfer.setData("text", event.target.id);
     //save the element from which the drag started into a variable
     dragOrigin = event.target;
 }
@@ -42,16 +43,24 @@ function dragLeave(event) {
 }
 
 function drop(event) {
-    event.preventDefault(); // This is in order to prevent the browser default handling of the data
-    const draggableElementData = event.dataTransfer.getData("text"); // Get the dragged data. This method will return any data that was set to the same type in the setData() method
-    const droppableElementData = event.target.getAttribute("data-draggable-id");
+    //event.preventDefault(); // This is in order to prevent the browser default handling of the data
+    //const draggableElementData = event.dataTransfer.getData("text"); // Get the dragged data. This method will return any data that was set to the same type in the setData() method
+    //const droppableElementData = event.target.getAttribute("data-draggable-id");
 
 
-    //cant drag into itself
-    if(event.target !== dragOrigin) {
-        event.target.insertAdjacentHTML("afterbegin", `<div class="b-square cell" draggable="true"></div>`);
-        dragOrigin.insertAdjacentHTML("afterbegin", `<div class="cell" draggable="false"></div>`);
+
+    if (dragOrigin.classList.contains("b-square")) {
+
+        if (parseInt(event.target.id) === parseInt(dragOrigin.id) + 1 || parseInt((event.target.id)) === parseInt(dragOrigin.id) - 1 || parseInt((event.target.id)) === parseInt(dragOrigin.id) + rowSize + 1 || parseInt((event.target.id)) === parseInt(dragOrigin.id) - rowSize - 1) {
+
+
+
+
+            event.target.classList.add("b-square");
+            event.target.setAttribute("draggable", "true");
+            dragOrigin.classList.remove("b-square");
+            dragOrigin.setAttribute("draggable", "false");
+        }
+
     }
-
-
 }

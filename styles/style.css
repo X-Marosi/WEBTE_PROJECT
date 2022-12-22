@@ -6,12 +6,6 @@ html {
 }
 
 
-.cell {
-    height: 100px;
-    width: 100px;
-    background: #b9b9b9;
-}
-
 .grid {
     display: grid;
     gap: 1px;
@@ -20,9 +14,21 @@ html {
     width: 300px;
     height: 300px;
 }
+.cell{
+    background: #b9b9b9;
+    width: 100px;
+    height: 100px;
+
+}
 
 .b-square {
-    background-color: #00b7ff;
+    background: #009dff;
+    cursor: move;
+}
+
+.r-square {
+    background: #ff3535;
+    cursor: not-allowed;
 }
 
 /* Drag and Drop Related Styling
