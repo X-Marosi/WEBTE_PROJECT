@@ -92,7 +92,7 @@ function drop(event) {
     let originId = parseInt(dragOrigin.id);
     if (dragOrigin.classList.contains("b-square")) {
         if (targetId === originId + 1 || targetId === originId - 1 ||targetId === originId + rowSize + 1 || targetId === originId - rowSize - 1) {
-            if(!event.target.classList.contains("char")){
+            if(!event.target.classList.contains("char") && !event.target.classList.contains("b-square") && !event.target.classList.contains("r-square")) {
                 event.target.classList.add("b-square");
                 event.target.setAttribute("draggable", "true");
                 event.target.appendChild(dragOrigin.querySelector("img"));
@@ -132,6 +132,7 @@ function moveUp(){
         }
     }
 }
+
 function moveDown(){
     circle= document.getElementsByClassName("char");
     target = document.getElementById(parseInt(circle[0].id)+rowSize+1);
