@@ -9,6 +9,26 @@ cells.forEach(elem => {
     elem.addEventListener("dragleave", dragLeave); // Fires when a dragged item leaves a valid drop target
     elem.addEventListener("drop", drop); // Fires when an item is dropped on a valid drop target
 });
+//add event listener for W
+document.addEventListener("keydown", function(event) {
+
+    if (event.keyCode === 87) {
+        moveUp();
+    }// if a is pressed
+    else if (event.keyCode === 65) {
+
+    }
+    // if s is pressed
+    else if (event.keyCode === 83) {
+
+    }
+    // if d is pressed
+    else if (event.keyCode === 68) {
+
+    }
+
+
+    });
 
 
 
@@ -63,4 +83,10 @@ function drop(event) {
 
         }
     }
+}
+function moveUp(){
+    let circle= document.getElementsByClassName("char");
+    console.log(circle.id) ;
+
+
 }
