@@ -16,15 +16,15 @@ document.addEventListener("keydown", function(event) {
         moveUp();
     }// if a is pressed
     else if (event.keyCode === 65) {
-
+        moveLeft();
     }
     // if s is pressed
     else if (event.keyCode === 83) {
-
+        moveDown();
     }
     // if d is pressed
     else if (event.keyCode === 68) {
-
+        moveRight();
     }
 
 
@@ -84,9 +84,34 @@ function drop(event) {
         }
     }
 }
+function moveRight(){
+    let circle= document.getElementsByClassName("char");
+    let target= document.getElementById(parseInt(circle[0].id)+1);
+    circle[0].classList.remove("char");
+    target.classList.add("char");
+
+
+
+
+}
+function moveLeft(){
+    let circle= document.getElementsByClassName("char");
+    let target = document.getElementById(parseInt(circle[0].id)-1);
+    circle[0].classList.remove("char");
+    target.classList.add("char");
+    console.log(target.classList);
+}
 function moveUp(){
     let circle= document.getElementsByClassName("char");
-    console.log(circle.id) ;
-
-
+    let target = document.getElementById(parseInt(circle[0].id)-rowSize-1);
+    circle[0].classList.remove("char");
+    target.classList.add("char");
+    console.log(target.classList);
+}
+function moveDown(){
+    let circle= document.getElementsByClassName("char");
+    let target = document.getElementById(parseInt(circle[0].id)+rowSize+1);
+    circle[0].classList.remove("char");
+    target.classList.add("char");
+    console.log(target.classList);
 }
