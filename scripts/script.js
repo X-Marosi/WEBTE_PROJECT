@@ -87,31 +87,37 @@ function drop(event) {
 function moveRight(){
     let circle= document.getElementsByClassName("char");
     let target= document.getElementById(parseInt(circle[0].id)+1);
+    if(target){
     circle[0].classList.remove("char");
     target.classList.add("char");
 
 
 
-
+    }
 }
 function moveLeft(){
     let circle= document.getElementsByClassName("char");
     let target = document.getElementById(parseInt(circle[0].id)-1);
+    if(target){
     circle[0].classList.remove("char");
     target.classList.add("char");
     console.log(target.classList);
+    }
 }
 function moveUp(){
     let circle= document.getElementsByClassName("char");
     let target = document.getElementById(parseInt(circle[0].id)-rowSize-1);
+    if(target){
+
     circle[0].classList.remove("char");
     target.classList.add("char");
     console.log(target.classList);
-}
+}}
 function moveDown(){
     let circle= document.getElementsByClassName("char");
     let target = document.getElementById(parseInt(circle[0].id)+rowSize+1);
+    if(target){
     circle[0].classList.remove("char");
     target.classList.add("char");
     console.log(target.classList);
-}
+}}
