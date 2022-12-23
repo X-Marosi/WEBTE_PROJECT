@@ -1,8 +1,24 @@
-const cells = document.querySelectorAll(".cell");
+let cells;
 let dragOrigin;
 let rowSize = 3;
 let circle;
 let target;
+
+
+
+document.getElementById("section").insertAdjacentHTML("afterbegin",
+        `<div class="char cell" id="1">  </div>
+            <div class="b-square cell" draggable="true" id="2"><img src="images/box.jpg" alt="" class="image"></div>
+            <div class="cell" id="3"></div>
+            <div class="r-square cell" id="5"></div>
+            <div class="r-square cell dropped" id="6"></div>
+            <div class="cell" draggable="true" id="7"></div>
+            <div class="cell" id="9"></div>
+            <div class="b-square cell" draggable="true" id="10"><img src="images/box.jpg" alt="" class="image"></div>
+            <div class="flag cell" id="11"></div> `);
+cells = document.querySelectorAll(".cell");
+
+
 cells.forEach(elem => {
     elem.addEventListener("dragstart", dragStart); // Fires as soon as the user starts dragging an item - This is where we can define the drag data
     elem.addEventListener("dragenter", dragEnter); // Fires when a dragged item enters a valid drop target
