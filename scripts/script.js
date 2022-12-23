@@ -1,7 +1,8 @@
 const cells = document.querySelectorAll(".cell");
 let dragOrigin;
 let rowSize = 3;
-
+let circle;
+let target;
 cells.forEach(elem => {
     elem.addEventListener("dragstart", dragStart); // Fires as soon as the user starts dragging an item - This is where we can define the drag data
     elem.addEventListener("dragenter", dragEnter); // Fires when a dragged item enters a valid drop target
@@ -27,6 +28,10 @@ document.addEventListener("keydown", function(event) {
         moveRight();
     }
 
+    if (target && target.classList.contains("flag")){
+        console.log("EZ ");
+        target.classList.remove("flag");
+    }
 
     });
 
@@ -67,26 +72,23 @@ function drop(event) {
     //event.preventDefault(); // This is in order to prevent the browser default handling of the data
     //const draggableElementData = event.dataTransfer.getData("text"); // Get the dragged data. This method will return any data that was set to the same type in the setData() method
     //const droppableElementData = event.target.getAttribute("data-draggable-id");
-
-
-
     let targetId = parseInt(event.target.id);
     let originId = parseInt(dragOrigin.id);
-
     if (dragOrigin.classList.contains("b-square")) {
         if (targetId === originId + 1 || targetId === originId - 1 ||targetId === originId + rowSize + 1 || targetId === originId - rowSize - 1) {
-            event.target.classList.add("b-square");
-            event.target.setAttribute("draggable", "true");
-            event.target.appendChild(dragOrigin.querySelector("img"));
-            dragOrigin.classList.remove("b-square");
-            dragOrigin.setAttribute("draggable", "false");
-
+            if(!event.target.classList.contains("char")){
+                event.target.classList.add("b-square");
+                event.target.setAttribute("draggable", "true");
+                event.target.appendChild(dragOrigin.querySelector("img"));
+                dragOrigin.classList.remove("b-square");
+                dragOrigin.setAttribute("draggable", "false");
+            }
         }
     }
 }
 function moveRight(){
-    let circle= document.getElementsByClassName("char");
-    let target= document.getElementById(parseInt(circle[0].id)+1);
+    circle= document.getElementsByClassName("char");
+    target= document.getElementById(parseInt(circle[0].id)+1);
     if(target){
         if(!target.classList.contains("b-square") && !target.classList.contains("r-square")) {
             circle[0].classList.remove("char");
@@ -95,35 +97,32 @@ function moveRight(){
     }
 }
 function moveLeft(){
-    let circle= document.getElementsByClassName("char");
-    let target = document.getElementById(parseInt(circle[0].id)-1);
+    circle= document.getElementsByClassName("char");
+    target = document.getElementById(parseInt(circle[0].id)-1);
     if(target){
         if(!target.classList.contains("b-square") && !target.classList.contains("r-square")) {
             circle[0].classList.remove("char");
             target.classList.add("char");
-            console.log(target.classList);
         }
     }
 }
 function moveUp(){
-    let circle= document.getElementsByClassName("char");
-    let target = document.getElementById(parseInt(circle[0].id)-rowSize-1);
+    circle= document.getElementsByClassName("char");
+    target = document.getElementById(parseInt(circle[0].id)-rowSize-1);
     if(target){
         if(!target.classList.contains("b-square") && !target.classList.contains("r-square")) {
             circle[0].classList.remove("char");
             target.classList.add("char");
-            console.log(target.classList);
         }
     }
 }
 function moveDown(){
-    let circle= document.getElementsByClassName("char");
-    let target = document.getElementById(parseInt(circle[0].id)+rowSize+1);
+    circle= document.getElementsByClassName("char");
+    target = document.getElementById(parseInt(circle[0].id)+rowSize+1);
     if(target){
         if(!target.classList.contains("b-square") && !target.classList.contains("r-square")) {
             circle[0].classList.remove("char");
             target.classList.add("char");
-            console.log(target.classList);
         }
     }
 }
