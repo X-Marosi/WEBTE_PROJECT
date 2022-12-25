@@ -29,12 +29,12 @@ fetch("./data.json")
             for (let x=0;x<data[currentmap].height;x++){
                 for (let y=1;y<data[currentmap].width+1;y++){
                     div1=document.createElement("div");
-                    div1.setAttribute("id",y+(x*3)+rowchecker);
+                    div1.setAttribute("id",y+(x*data[currentmap].height)+rowchecker);
                     if (x==0 && y==1){
                         div1.classList.add("char");
                         div1.classList.add("cell");
                     }
-                    else if (data[currentmap].boxes.includes(y+(x*3))){
+                    else if (data[currentmap].boxes.includes(y+(x*data[currentmap].height))){
                         div1.classList.add("b-square");
                         div1.classList.add("cell");
                         let image= document.createElement("img");
@@ -45,7 +45,7 @@ fetch("./data.json")
                         image.setAttribute("class","image")
                         div1.appendChild(image);
                     }
-                    else if ( data[currentmap].walls.includes(y+(x*3))){
+                    else if ( data[currentmap].walls.includes(y+(x*data[currentmap].height))){
                         div1.classList.add("r-square");
                         div1.classList.add("cell");
                     }
