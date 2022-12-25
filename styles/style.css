@@ -6,12 +6,32 @@ html {
 }
 
 
-.grid {
+.grid-3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     margin: auto;
     width: 15rem;
     height: 15rem;
+    border: gray 30px solid;
+    background: #ececec;
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: auto;
+    width: 20rem;
+    height: 20rem;
+    border: gray 30px solid;
+    background: #ececec;
+}
+
+.grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    margin: auto;
+    width: 25rem;
+    height: 25rem;
     border: gray 30px solid;
     background: #ececec;
 }
