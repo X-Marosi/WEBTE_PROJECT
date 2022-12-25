@@ -7,7 +7,7 @@ let currentmap=0; // for json
 let section = document.getElementsByTagName("section")[0];
 let div1;
 let rowchecker=0;
-
+//.
 
 /*document.getElementById("section").insertAdjacentHTML("afterbegin",
         `<div class="char cell" id="1">  </div>
