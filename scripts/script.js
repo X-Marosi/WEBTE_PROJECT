@@ -22,77 +22,85 @@ let rowchecker=0;
 fetch("./data.json")
     .then(res => res.json())
     .then((data) =>{
-        for (let x=0;x<data[currentmap].height;x++){
-            for (let y=1;y<data[currentmap].width+1;y++){
-                div1=document.createElement("div");
-                div1.setAttribute("id",y+(x*3)+rowchecker);
-                if (x==0 && y==1){
-                    div1.classList.add("char");
-                    div1.classList.add("cell");
+        loadmap();
+        function loadmap(){
+            section.innerHTML=""
+            for (let x=0;x<data[currentmap].height;x++){
+                for (let y=1;y<data[currentmap].width+1;y++){
+                    div1=document.createElement("div");
+                    div1.setAttribute("id",y+(x*3)+rowchecker);
+                    if (x==0 && y==1){
+                        div1.classList.add("char");
+                        div1.classList.add("cell");
+                    }
+                    else if (data[currentmap].boxes.includes(y+(x*3))){
+                        div1.classList.add("b-square");
+                        div1.classList.add("cell");
+                        let image= document.createElement("img");
+                        div1.setAttribute("draggable","true");
+                        image.setAttribute("src","images/box.jpg");
+                        image.setAttribute("alt","");
+                        image.setAttribute("class","image")
+                        image.setAttribute("class","image")
+                        div1.appendChild(image);
+                    }
+                    else if ( data[currentmap].walls.includes(y+(x*3))){
+                        div1.classList.add("r-square");
+                        div1.classList.add("cell");
+                    }
+                    else if( y==data[currentmap].width && x==data[currentmap].height-1){
+                        div1.classList.add("flag");
+                        div1.classList.add("cell");
+                    }
+                    else{
+                        div1.setAttribute("class","cell");
+                    }
+                    section.appendChild(div1);
                 }
-                else if (data[currentmap].boxes.includes(y+(x*3))){
-                    div1.classList.add("b-square");
-                    div1.classList.add("cell");
-                    let image= document.createElement("img");
-                    div1.setAttribute("draggable","true");
-                    image.setAttribute("src","images/box.jpg");
-                    image.setAttribute("alt","");
-                    image.setAttribute("class","image")
-                    image.setAttribute("class","image")
-                    div1.appendChild(image);
-                }
-                else if ( data[currentmap].walls.includes(y+(x*3))){
-                    div1.classList.add("r-square");
-                    div1.classList.add("cell");
-                }
-                else if( y==data[currentmap].width && x==data[currentmap].height-1){
-                    div1.classList.add("flag");
-                    div1.classList.add("cell");
-                }
-                else{
-                div1.setAttribute("class","cell");
-                }
-                section.appendChild(div1);
+                rowchecker++;
+
             }
-            rowchecker++;
+            cells = document.querySelectorAll(".cell");
+            cells.forEach(elem => {
+                elem.addEventListener("dragstart", dragStart); // Fires as soon as the user starts dragging an item - This is where we can define the drag data
+                elem.addEventListener("dragenter", dragEnter); // Fires when a dragged item enters a valid drop target
+                elem.addEventListener("dragover", dragOver); // Fires when a dragged item is being dragged over a valid drop target, repeatedly while the draggable item is within the drop zone
+                elem.addEventListener("dragleave", dragLeave); // Fires when a dragged item leaves a valid drop target
+                elem.addEventListener("drop", drop); // Fires when an item is dropped on a valid drop target
+            });
 
         }
-        cells = document.querySelectorAll(".cell");
-        cells.forEach(elem => {
-            elem.addEventListener("dragstart", dragStart); // Fires as soon as the user starts dragging an item - This is where we can define the drag data
-            elem.addEventListener("dragenter", dragEnter); // Fires when a dragged item enters a valid drop target
-            elem.addEventListener("dragover", dragOver); // Fires when a dragged item is being dragged over a valid drop target, repeatedly while the draggable item is within the drop zone
-            elem.addEventListener("dragleave", dragLeave); // Fires when a dragged item leaves a valid drop target
-            elem.addEventListener("drop", drop); // Fires when an item is dropped on a valid drop target
+        document.addEventListener("keydown", function(event) {
+
+            if (event.keyCode === 87) {
+                moveUp();
+            }// if A is pressed
+            else if (event.keyCode === 65) {
+                moveLeft();
+            }
+            // if s is pressed
+            else if (event.keyCode === 83) {
+                moveDown();
+            }
+            // if d is pressed
+            else if (event.keyCode === 68) {
+                moveRight();
+            }
+
+            if (target && target.classList.contains("flag")){
+                currentmap++;
+                loadmap();
+                console.log("EZ ");
+                target.classList.remove("flag");
+            }
+
         });
     });
 
 
 
 //add event listener for W
-document.addEventListener("keydown", function(event) {
 
-    if (event.keyCode === 87) {
-        moveUp();
-    }// if A is pressed
-    else if (event.keyCode === 65) {
-        moveLeft();
-    }
-    // if s is pressed
-    else if (event.keyCode === 83) {
-        moveDown();
-    }
-    // if d is pressed
-    else if (event.keyCode === 68) {
-        moveRight();
-    }
-
-    if (target && target.classList.contains("flag")){
-        console.log("EZ ");
-        target.classList.remove("flag");
-    }
-
-    });
 
 
 
