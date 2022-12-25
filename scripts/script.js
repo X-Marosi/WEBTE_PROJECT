@@ -27,12 +27,10 @@ fetch("./data.json")
                 div1=document.createElement("div");
                 div1.setAttribute("id",y+(x*3)+rowchecker);
                 if (x==0 && y==1){
-                    console.log("why")
                     div1.classList.add("char");
                     div1.classList.add("cell");
                 }
                 else if (data[currentmap].boxes.includes(y+(x*3))){
-                    console.log("halloo");
                     div1.classList.add("b-square");
                     div1.classList.add("cell");
                     let image= document.createElement("img");
@@ -44,7 +42,6 @@ fetch("./data.json")
                     div1.appendChild(image);
                 }
                 else if ( data[currentmap].walls.includes(y+(x*3))){
-                    console.log("halloo22");
                     div1.classList.add("r-square");
                     div1.classList.add("cell");
                 }
@@ -60,19 +57,18 @@ fetch("./data.json")
             rowchecker++;
 
         }
-
-
+        cells = document.querySelectorAll(".cell");
+        cells.forEach(elem => {
+            elem.addEventListener("dragstart", dragStart); // Fires as soon as the user starts dragging an item - This is where we can define the drag data
+            elem.addEventListener("dragenter", dragEnter); // Fires when a dragged item enters a valid drop target
+            elem.addEventListener("dragover", dragOver); // Fires when a dragged item is being dragged over a valid drop target, repeatedly while the draggable item is within the drop zone
+            elem.addEventListener("dragleave", dragLeave); // Fires when a dragged item leaves a valid drop target
+            elem.addEventListener("drop", drop); // Fires when an item is dropped on a valid drop target
+        });
     });
-cells = document.querySelectorAll(".cell");
 
 
-cells.forEach(elem => {
-    elem.addEventListener("dragstart", dragStart); // Fires as soon as the user starts dragging an item - This is where we can define the drag data
-    elem.addEventListener("dragenter", dragEnter); // Fires when a dragged item enters a valid drop target
-    elem.addEventListener("dragover", dragOver); // Fires when a dragged item is being dragged over a valid drop target, repeatedly while the draggable item is within the drop zone
-    elem.addEventListener("dragleave", dragLeave); // Fires when a dragged item leaves a valid drop target
-    elem.addEventListener("drop", drop); // Fires when an item is dropped on a valid drop target
-});
+
 //add event listener for W
 document.addEventListener("keydown", function(event) {
 
