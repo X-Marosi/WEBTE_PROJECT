@@ -24,6 +24,7 @@ fetch("./data.json")
     .then((data) =>{
         loadmap();
         function loadmap(){
+            rowchecker=0;
             section.innerHTML=""
             for (let x=0;x<data[currentmap].height;x++){
                 for (let y=1;y<data[currentmap].width+1;y++){
