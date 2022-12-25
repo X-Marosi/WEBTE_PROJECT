@@ -1,0 +1,10 @@
+[{"height":3,
+  "width":3,
+  "boxes": [2, 8 ],
+  "walls": [4, 5 ]
+},
+{"height":3,
+  "width":3,
+  "boxes": [2, 8 ],
+  "walls": [4, 5 ]
+}]

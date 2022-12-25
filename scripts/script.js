@@ -3,10 +3,13 @@ let dragOrigin;
 let rowSize = 3;
 let circle;
 let target;
+let currentmap=0; // for json
+let section = document.getElementsByTagName("section")[0];
+let div1;
+let rowchecker=0;
 
 
-
-document.getElementById("section").insertAdjacentHTML("afterbegin",
+/*document.getElementById("section").insertAdjacentHTML("afterbegin",
         `<div class="char cell" id="1">  </div>
             <div class="b-square cell" draggable="true" id="2"><img src="images/box.jpg" alt="" class="image"></div>
             <div class="cell" id="3"></div>
@@ -15,7 +18,51 @@ document.getElementById("section").insertAdjacentHTML("afterbegin",
             <div class="cell" draggable="true" id="7"></div>
             <div class="cell" id="9"></div>
             <div class="b-square cell" draggable="true" id="10"><img src="images/box.jpg" alt="" class="image"></div>
-            <div class="flag cell" id="11"></div> `);
+            <div class="flag cell" id="11"></div> `);*/
+fetch("./data.json")
+    .then(res => res.json())
+    .then((data) =>{
+        for (let x=0;x<data[currentmap].height;x++){
+            for (let y=1;y<data[currentmap].width+1;y++){
+                div1=document.createElement("div");
+                div1.setAttribute("id",y+(x*3)+rowchecker);
+                if (x==0 && y==1){
+                    console.log("why")
+                    div1.classList.add("char");
+                    div1.classList.add("cell");
+                }
+                else if (data[currentmap].boxes.includes(y+(x*3))){
+                    console.log("halloo");
+                    div1.classList.add("b-square");
+                    div1.classList.add("cell");
+                    let image= document.createElement("img");
+                    div1.setAttribute("draggable","true");
+                    image.setAttribute("src","images/box.jpg");
+                    image.setAttribute("alt","");
+                    image.setAttribute("class","image")
+                    image.setAttribute("class","image")
+                    div1.appendChild(image);
+                }
+                else if ( data[currentmap].walls.includes(y+(x*3))){
+                    console.log("halloo22");
+                    div1.classList.add("r-square");
+                    div1.classList.add("cell");
+                }
+                else if( y==data[currentmap].width && x==data[currentmap].height-1){
+                    div1.classList.add("flag");
+                    div1.classList.add("cell");
+                }
+                else{
+                div1.setAttribute("class","cell");
+                }
+                section.appendChild(div1);
+            }
+            rowchecker++;
+
+        }
+
+
+    });
 cells = document.querySelectorAll(".cell");
 
 
@@ -61,7 +108,6 @@ function dragStart(event) {
     //event.dataTransfer.setData("text", event.target.id);
     //save the element from which the drag started into a variable
     dragOrigin = event.target;
-
 }
 
 //Events fired on the drop target
@@ -90,6 +136,7 @@ function drop(event) {
     //const droppableElementData = event.target.getAttribute("data-draggable-id");
     let targetId = parseInt(event.target.id);
     let originId = parseInt(dragOrigin.id);
+    console.log("here");
     if (dragOrigin.classList.contains("b-square")) {
         if (targetId === originId + 1 || targetId === originId - 1 ||targetId === originId + rowSize + 1 || targetId === originId - rowSize - 1) {
             if(!event.target.classList.contains("char") && !event.target.classList.contains("b-square") && !event.target.classList.contains("r-square")) {
