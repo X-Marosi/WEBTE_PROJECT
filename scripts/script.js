@@ -1,40 +1,32 @@
 let cells;
 let dragOrigin;
-let rowSize = 3;
+let rowSize;
 let circle;
 let target;
-let currentmap=0; // for json
+let currentMap=0; // for json
 let section = document.getElementsByTagName("section")[0];
 let div1;
-let rowchecker=0;
-//.
+let rowChecker=0;
 
-/*document.getElementById("section").insertAdjacentHTML("afterbegin",
-        `<div class="char cell" id="1">  </div>
-            <div class="b-square cell" draggable="true" id="2"><img src="images/box.jpg" alt="" class="image"></div>
-            <div class="cell" id="3"></div>
-            <div class="r-square cell" id="5"></div>
-            <div class="r-square cell dropped" id="6"></div>
-            <div class="cell" draggable="true" id="7"></div>
-            <div class="cell" id="9"></div>
-            <div class="b-square cell" draggable="true" id="10"><img src="images/box.jpg" alt="" class="image"></div>
-            <div class="flag cell" id="11"></div> `);*/
+
 fetch("./data.json")
     .then(res => res.json())
     .then((data) =>{
         loadmap();
         function loadmap(){
-            rowchecker=0;
+
+            rowSize = data[currentMap].width;
+            rowChecker=0;
             section.innerHTML=""
-            for (let x=0;x<data[currentmap].height;x++){
-                for (let y=1;y<data[currentmap].width+1;y++){
+            for (let x=0;x<data[currentMap].height;x++){
+                for (let y=1;y<data[currentMap].width+1;y++){
                     div1=document.createElement("div");
-                    div1.setAttribute("id",y+(x*data[currentmap].height)+rowchecker);
-                    if (x==0 && y==1){
+                    div1.setAttribute("id",y+(x*data[currentMap].height)+rowChecker);
+                    if (x === 0 && y === 1){
                         div1.classList.add("char");
                         div1.classList.add("cell");
                     }
-                    else if (data[currentmap].boxes.includes(y+(x*data[currentmap].height))){
+                    else if (data[currentMap].boxes.includes(y+(x*data[currentMap].height))){
                         div1.classList.add("b-square");
                         div1.classList.add("cell");
                         let image= document.createElement("img");
@@ -45,11 +37,11 @@ fetch("./data.json")
                         image.setAttribute("class","image")
                         div1.appendChild(image);
                     }
-                    else if ( data[currentmap].walls.includes(y+(x*data[currentmap].height))){
+                    else if ( data[currentMap].walls.includes(y+(x*data[currentMap].height))){
                         div1.classList.add("r-square");
                         div1.classList.add("cell");
                     }
-                    else if( y==data[currentmap].width && x==data[currentmap].height-1){
+                    else if( y===data[currentMap].width && x===data[currentMap].height-1){
                         div1.classList.add("flag");
                         div1.classList.add("cell");
                     }
@@ -58,7 +50,7 @@ fetch("./data.json")
                     }
                     section.appendChild(div1);
                 }
-                rowchecker++;
+                rowChecker++;
 
             }
             cells = document.querySelectorAll(".cell");
@@ -89,7 +81,7 @@ fetch("./data.json")
             }
 
             if (target && target.classList.contains("flag")){
-                currentmap++;
+                currentMap++;
                 loadmap();
                 console.log("EZ ");
                 target.classList.remove("flag");
@@ -97,12 +89,6 @@ fetch("./data.json")
 
         });
     });
-
-
-
-//add event listener for W
-
-
 
 
 // Drag and Drop Functions
@@ -154,6 +140,7 @@ function drop(event) {
         }
     }
 }
+
 function moveRight(){
     circle= document.getElementsByClassName("char");
     target= document.getElementById(parseInt(circle[0].id)+1);
@@ -164,6 +151,7 @@ function moveRight(){
         }
     }
 }
+
 function moveLeft(){
     circle= document.getElementsByClassName("char");
     target = document.getElementById(parseInt(circle[0].id)-1);
@@ -174,6 +162,7 @@ function moveLeft(){
         }
     }
 }
+
 function moveUp(){
     circle= document.getElementsByClassName("char");
     target = document.getElementById(parseInt(circle[0].id)-rowSize-1);
