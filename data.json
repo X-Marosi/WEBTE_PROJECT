@@ -1,10 +1,45 @@
-[{"height":4,
-  "width":4,
-  "boxes": [2, 8],
-  "walls": [4, 5]
-},
-{"height":4,
-  "width":4,
-  "boxes": [2, 3],
-  "walls": [5, 6]
-}]
+[
+  {
+    "name": "Level 1",
+    "height":4,
+    "width":4,
+    "boxes": [2, 8],
+    "walls": [4, 5]
+  },
+
+  {
+    "name": "Level 2",
+    "height":4,
+    "width":4,
+    "boxes": [2, 5, 6],
+    "walls": [4, 7, 8, 10, 11, 12]
+  },
+  {
+    "name": "Level 3",
+    "height":4,
+    "width":4,
+    "boxes": [2, 3, 4, 5, 7, 8, 9, 10, 12, 13, 14, 15],
+    "walls": [6, 11]
+  },
+  {
+    "name": "Level 4",
+    "height":4,
+    "width":4,
+    "boxes": [2, 10, 12],
+    "walls": [3, 4, 5, 9, 11, 13, 15]
+  },
+  {
+    "name": "Level 5",
+    "height":4,
+    "width":4,
+    "boxes": [2, 8],
+    "walls": [4, 5]
+  },
+  {
+    "name": "Level 6",
+    "height":4,
+    "width":4,
+    "boxes": [2, 8],
+    "walls": [4, 5]
+}
+]
