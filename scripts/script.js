@@ -12,19 +12,22 @@ let rowChecker=0;
 fetch("./data.json")
     .then(res => res.json())
     .then((data) =>{
-        loadmap();
-        function loadmap(){
+
+        loadMap();
+
+        function loadMap(){
 
             rowSize = data[currentMap].width;
-            rowChecker=0;
+            rowChecker = 0;
             section.innerHTML=""
+            section.classList.add("grid-"+rowSize);
+
             for (let x=0;x<data[currentMap].height;x++){
                 for (let y=1;y<data[currentMap].width+1;y++){
                     div1=document.createElement("div");
                     div1.setAttribute("id",y+(x*data[currentMap].height)+rowChecker);
-                    if (x === 0 && y === 1){
-                        div1.classList.add("char");
-                        div1.classList.add("cell");
+                    if (data[currentMap].char === y+(x*data[currentMap].height)+rowChecker){
+                        div1.classList.add("char", "cell");
                     }
                     else if (data[currentMap].boxes.includes(y+(x*data[currentMap].height))){
                         div1.classList.add("b-square");
@@ -41,14 +44,15 @@ fetch("./data.json")
                         div1.classList.add("r-square");
                         div1.classList.add("cell");
                     }
-                    else if( y===data[currentMap].width && x===data[currentMap].height-1){
-                        div1.classList.add("flag");
-                        div1.classList.add("cell");
-                    }
                     else{
                         div1.setAttribute("class","cell");
                     }
                     section.appendChild(div1);
+
+                    if( data[currentMap].goal === y+(x*data[currentMap].height)+rowChecker){
+                        div1.classList.add("flag");
+                        div1.classList.add("cell");
+                    }
                 }
                 rowChecker++;
 
@@ -63,6 +67,7 @@ fetch("./data.json")
             });
 
         }
+
         document.addEventListener("keydown", function(event) {
 
             if (event.keyCode === 87) {
@@ -82,7 +87,7 @@ fetch("./data.json")
 
             if (target && target.classList.contains("flag")){
                 currentMap++;
-                loadmap();
+                loadMap();
                 console.log("EZ ");
                 target.classList.remove("flag");
             }
