@@ -17,8 +17,8 @@ body {
     margin: auto;
     width: 15rem;
     height: 15rem;
-    border: 2.5rem solid transparent;
-    border-image: url(../images/border.png) 100;
+    border: 1rem solid transparent;
+    border-image: url(../images/border.png) 45;
 
 }
 
@@ -28,8 +28,8 @@ body {
     margin: auto;
     width: 20rem;
     height: 20rem;
-    border: 2.5rem solid transparent;
-    border-image: url(../images/border.png) 100;
+    border: 1rem solid transparent;
+    border-image: url(../images/border.png) 45;
 }
 
 .grid-5 {
@@ -38,8 +38,8 @@ body {
     margin: auto;
     width: 25rem;
     height: 25rem;
-    border: 2.5rem solid transparent;
-    border-image: url(../images/border.png) 100;
+    border: 1rem solid transparent;
+    border-image: url(../images/border.png) 45;
 }
 
 .cell{
