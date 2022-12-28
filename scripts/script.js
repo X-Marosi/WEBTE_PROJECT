@@ -30,7 +30,7 @@ fetch("./data.json")
                     if (data[currentMap].char === y+(x*data[currentMap].height)+rowChecker){
                         div1.classList.add("char", "cell");
                         let image= document.createElement("img");
-                        image.setAttribute("src","images/char.jpg");
+                        image.setAttribute("src","images/char.png");
                         image.setAttribute("alt","");
                         image.setAttribute("class","image")
                         image.setAttribute("class","image")
@@ -208,7 +208,7 @@ function classChanger(){
     let image= document.createElement("img");
     circle[0].classList.remove("char");
     target2.removeChild(target2.childNodes[0]);
-    image.setAttribute("src","images/char.jpg");
+    image.setAttribute("src","images/char.png");
     image.setAttribute("alt","");
     image.setAttribute("class","image")
     image.setAttribute("class","image")

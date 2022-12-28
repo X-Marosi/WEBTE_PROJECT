@@ -45,7 +45,9 @@ body {
     width: 5rem;
     height: 5rem;
     background-color: #e4dcd1;
-    background-image: url(../images/floor.png);
+    /*background-image: url(../images/floor.png);
+    background-size: 100%;*/
+
 }
 .b-square {
     cursor: move;
@@ -71,8 +73,4 @@ body {
 .flag {
     border-radius: 20%;
     background-image: url(../images/flag.jpg);
-}
-
-.ghost {
-    display: none;
 }
