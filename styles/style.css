@@ -5,6 +5,10 @@ html {
     box-sizing: border-box;
 }
 
+body {
+    background-color: #e4dcd1;
+}
+
 
 .grid-3 {
     display: grid;
@@ -12,7 +16,8 @@ html {
     margin: auto;
     width: 15rem;
     height: 15rem;
-    border: gray 30px solid;
+    border: 30px solid transparent;
+    border-image: url(../images/box.png);
     background: #ececec;
 }
 
@@ -39,6 +44,7 @@ html {
 .cell{
     width: 5rem;
     height: 5rem;
+    background-color: #e4dcd1;
 }
 .b-square {
     cursor: move;

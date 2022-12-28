@@ -34,7 +34,7 @@ fetch("./data.json")
                         div1.classList.add("cell");
                         let image= document.createElement("img");
                         div1.setAttribute("draggable","true");
-                        image.setAttribute("src","images/box.jpg");
+                        image.setAttribute("src","images/box.png");
                         image.setAttribute("alt","");
                         image.setAttribute("class","image")
                         image.setAttribute("class","image")
