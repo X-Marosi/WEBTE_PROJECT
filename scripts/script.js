@@ -117,12 +117,12 @@ fetch("./data.json")
                 b.innerHTML="Next Level";
                 currentMap++;
                 console.log("EZ ");
-                alldragboxes= document.getElementsByClassName("b-square");
+               /* alldragboxes= document.getElementsByClassName("b-square");
                 forLong=alldragboxes.length;
                 for (let i = 0; i < forLong; i++) {
                     boxTarget= document.getElementById(alldragboxes[0].id);
                     boxTarget.setAttribute("class","dropped");
-                }
+                }*/
             }
 
         });
@@ -134,8 +134,8 @@ fetch("./data.json")
 //Events fired on the drag target
 
 function dragStart(event) {
-
-        dragOrigin = event.target;
+        if (levelReady==0){
+        dragOrigin = event.target;}
 
 }
 
