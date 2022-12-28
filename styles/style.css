@@ -52,13 +52,10 @@ body {
 }
 
 .r-square {
-    background: #3b2828;
     cursor: default;
 }
 
 .char {
-    border-radius: 50%;
-    background: rgba(18, 255, 0, 0.3);
 }
 
 .image {
@@ -69,9 +66,8 @@ body {
 }
 
 .flag {
-    background: #a100ff;
     border-radius: 20%;
 }
-section{
-    /*visibility: hidden;*/
+.ghost {
+    visibility: hidden;
 }
