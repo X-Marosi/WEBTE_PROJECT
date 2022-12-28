@@ -28,6 +28,12 @@ fetch("./data.json")
                     div1.setAttribute("id",y+(x*data[currentMap].height)+rowChecker);
                     if (data[currentMap].char === y+(x*data[currentMap].height)+rowChecker){
                         div1.classList.add("char", "cell");
+                        let image= document.createElement("img");
+                        image.setAttribute("src","images/char.jpg");
+                        image.setAttribute("alt","");
+                        image.setAttribute("class","image")
+                        image.setAttribute("class","image")
+                        div1.appendChild(image);
                     }
                     else if (data[currentMap].boxes.includes(y+(x*data[currentMap].height))){
                         div1.classList.add("b-square");
