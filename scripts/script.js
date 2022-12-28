@@ -65,12 +65,6 @@ fetch("./data.json")
 
                         div1.classList.add("flag");
                         div1.classList.add("cell");
-                        let image= document.createElement("img");
-                        image.setAttribute("src","images/flag.jpg");
-                        image.setAttribute("alt","");
-                        image.setAttribute("class","image")
-                        image.setAttribute("class","image")
-                        div1.appendChild(image);
                     }
                 }
                 rowChecker++;
@@ -161,6 +155,7 @@ function drop(event) {
                 dragOrigin.classList.remove("b-square");
                 dragOrigin.setAttribute("draggable", "false");
             }
+
         }
     }
 }
