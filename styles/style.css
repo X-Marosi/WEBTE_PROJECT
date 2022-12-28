@@ -69,5 +69,5 @@ body {
     border-radius: 20%;
 }
 .ghost {
-    visibility: hidden;
+    display: none;
 }
