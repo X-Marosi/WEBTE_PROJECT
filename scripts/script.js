@@ -65,7 +65,7 @@ fetch("./data.json")
 
                         div1.classList.add("flag");
                         div1.classList.add("cell");
-                        div1.setAttribute("draggable","true");
+                        let image= document.createElement("img");
                         image.setAttribute("src","images/flag.jpg");
                         image.setAttribute("alt","");
                         image.setAttribute("class","image")
