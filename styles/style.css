@@ -17,8 +17,8 @@ body {
     width: 15rem;
     height: 15rem;
     border: 30px solid transparent;
-    border-image: url(../images/box.png);
-    background: #ececec;
+    border-image: url(../images/wall.png);
+
 }
 
 .grid-4 {
@@ -67,7 +67,9 @@ body {
 
 .flag {
     border-radius: 20%;
+    background-image: url(../images/flag.jpg);
 }
+
 .ghost {
     display: none;
 }
