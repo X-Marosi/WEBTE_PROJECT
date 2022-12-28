@@ -50,7 +50,7 @@ fetch("./data.json")
                         div1.classList.add("r-square");
                         div1.classList.add("cell");
                         let image= document.createElement("img");
-                        image.setAttribute("src","images/wall.jpg");
+                        image.setAttribute("src","images/wall.png");
                         image.setAttribute("alt","");
                         image.setAttribute("class","image")
                         image.setAttribute("class","image")
