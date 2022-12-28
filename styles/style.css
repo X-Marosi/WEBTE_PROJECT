@@ -16,8 +16,8 @@ body {
     margin: auto;
     width: 15rem;
     height: 15rem;
-    border: 50px solid transparent;
-    border-image: url(../images/wall.png) 0 round;
+    border: 5rem solid #a49d93;
+    /*border-image: url(../images/wall.png) 0 round;*/
 
 }
 
@@ -45,6 +45,7 @@ body {
     width: 5rem;
     height: 5rem;
     background-color: #e4dcd1;
+    background-image: url(../images/floor.png);
 }
 .b-square {
     cursor: move;
