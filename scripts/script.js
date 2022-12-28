@@ -8,15 +8,22 @@ let currentMap=0; // for json
 let section = document.getElementsByTagName("section")[0];
 let div1;
 let rowChecker=0;
+let b;
 
 
 fetch("./data.json")
     .then(res => res.json())
     .then((data) =>{
+        b = document.createElement('button');
+        b.innerHTML="play";
+        b.id="button"
+        b.onclick = function() { loadMap(); }
+        document.body.appendChild(b)
 
-        loadMap();
 
         function loadMap(){
+            b=document.getElementById("button")
+            b.style.visibility="hidden";
             section.visibility="visible";
             rowSize = data[currentMap].width;
             rowChecker = 0;
@@ -100,8 +107,9 @@ fetch("./data.json")
             }
 
             if (target && target.classList.contains("flag")){
+                b.style.visibility="visible";
+                b.innerHTML="Next Level";
                 currentMap++;
-                loadMap();
                 console.log("EZ ");
                 target.classList.remove("flag");
             }
