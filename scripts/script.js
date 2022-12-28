@@ -4,12 +4,15 @@ let rowSize;
 let circle;
 let target;
 let target2;
+let boxTarget;
 let currentMap=0; // for json
 let section = document.getElementsByTagName("section")[0];
 let div1;
 let rowChecker=0;
 let b;
 let levelReady;
+let alldragboxes;
+let forLong ;
 
 
 fetch("./data.json")
@@ -108,12 +111,18 @@ fetch("./data.json")
                 moveRight();
             }
 
-            if (target && target.classList.contains("flag") && !target.classList.contains("b-square") ){
+            if (target && target.classList.contains("flag") && !target.classList.contains("b-square") && levelReady==0){
                 levelReady=1;
                 b.style.visibility="visible";
                 b.innerHTML="Next Level";
                 currentMap++;
                 console.log("EZ ");
+                alldragboxes= document.getElementsByClassName("b-square");
+                forLong=alldragboxes.length;
+                for (let i = 0; i < forLong; i++) {
+                    boxTarget= document.getElementById(alldragboxes[0].id);
+                    boxTarget.setAttribute("class","dropped");
+                }
             }
 
         });
@@ -125,9 +134,9 @@ fetch("./data.json")
 //Events fired on the drag target
 
 function dragStart(event) {
-    //event.dataTransfer.setData("text", event.target.id);
-    //save the element from which the drag started into a variable
-    dragOrigin = event.target;
+
+        dragOrigin = event.target;
+
 }
 
 //Events fired on the drop target
