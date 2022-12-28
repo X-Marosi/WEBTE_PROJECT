@@ -51,12 +51,13 @@ body {
     margin: auto;
 }
 
+
 .r-square {
     cursor: default;
 }
 
 .char {
-    background-image: url(../images/char.jpg);
+
 }
 
 .image {

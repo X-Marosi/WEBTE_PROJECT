@@ -3,6 +3,7 @@ let dragOrigin;
 let rowSize;
 let circle;
 let target;
+let target2;
 let currentMap=0; // for json
 let section = document.getElementsByTagName("section")[0];
 let div1;
@@ -163,10 +164,10 @@ function drop(event) {
 function moveRight(){
     circle= document.getElementsByClassName("char");
     target= document.getElementById(parseInt(circle[0].id)+1);
+    target2= document.getElementById(circle[0].id);
     if(target){
         if(!target.classList.contains("b-square") && !target.classList.contains("r-square")) {
-            circle[0].classList.remove("char");
-            target.classList.add("char");
+            classChanger();
         }
     }
 }
@@ -174,10 +175,10 @@ function moveRight(){
 function moveLeft(){
     circle= document.getElementsByClassName("char");
     target = document.getElementById(parseInt(circle[0].id)-1);
+    target2= document.getElementById(circle[0].id);
     if(target){
         if(!target.classList.contains("b-square") && !target.classList.contains("r-square")) {
-            circle[0].classList.remove("char");
-            target.classList.add("char");
+            classChanger();
         }
     }
 }
@@ -185,10 +186,10 @@ function moveLeft(){
 function moveUp(){
     circle= document.getElementsByClassName("char");
     target = document.getElementById(parseInt(circle[0].id)-rowSize-1);
+    target2= document.getElementById(circle[0].id);
     if(target){
         if(!target.classList.contains("b-square") && !target.classList.contains("r-square")) {
-            circle[0].classList.remove("char");
-            target.classList.add("char");
+            classChanger();
         }
     }
 }
@@ -196,10 +197,21 @@ function moveUp(){
 function moveDown(){
     circle= document.getElementsByClassName("char");
     target = document.getElementById(parseInt(circle[0].id)+rowSize+1);
+    target2= document.getElementById(circle[0].id);
     if(target){
         if(!target.classList.contains("b-square") && !target.classList.contains("r-square")) {
-            circle[0].classList.remove("char");
-            target.classList.add("char");
+            classChanger();
         }
     }
+}
+function classChanger(){
+    let image= document.createElement("img");
+    circle[0].classList.remove("char");
+    target2.removeChild(target2.childNodes[0]);
+    image.setAttribute("src","images/char.jpg");
+    image.setAttribute("alt","");
+    image.setAttribute("class","image")
+    image.setAttribute("class","image")
+    target.classList.add("char");
+    target.appendChild(image)
 }
