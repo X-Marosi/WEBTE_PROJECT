@@ -9,6 +9,7 @@ let section = document.getElementsByTagName("section")[0];
 let div1;
 let rowChecker=0;
 let b;
+let levelReady;
 
 
 fetch("./data.json")
@@ -22,6 +23,7 @@ fetch("./data.json")
 
 
         function loadMap(){
+            levelReady=0;
             b=document.getElementById("button")
             b.style.visibility="hidden";
             section.visibility="visible";
@@ -91,27 +93,27 @@ fetch("./data.json")
 
         document.addEventListener("keydown", function(event) {
 
-            if (event.keyCode === 87) {
+            if (event.keyCode === 87 && levelReady==0) {
                 moveUp();
             }// if A is pressed
-            else if (event.keyCode === 65) {
+            else if (event.keyCode === 65 && levelReady==0) {
                 moveLeft();
             }
             // if s is pressed
-            else if (event.keyCode === 83) {
+            else if (event.keyCode === 83 && levelReady==0) {
                 moveDown();
             }
             // if d is pressed
-            else if (event.keyCode === 68) {
+            else if (event.keyCode === 68 && levelReady==0) {
                 moveRight();
             }
 
-            if (target && target.classList.contains("flag")){
+            if (target && target.classList.contains("flag") && !target.classList.contains("b-square") ){
+                levelReady=1;
                 b.style.visibility="visible";
                 b.innerHTML="Next Level";
                 currentMap++;
                 console.log("EZ ");
-                target.classList.remove("flag");
             }
 
         });
