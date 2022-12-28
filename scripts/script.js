@@ -16,7 +16,7 @@ fetch("./data.json")
         loadMap();
 
         function loadMap(){
-
+            section.visibility="visible";
             rowSize = data[currentMap].width;
             rowChecker = 0;
             section.innerHTML=""
@@ -28,6 +28,12 @@ fetch("./data.json")
                     div1.setAttribute("id",y+(x*data[currentMap].height)+rowChecker);
                     if (data[currentMap].char === y+(x*data[currentMap].height)+rowChecker){
                         div1.classList.add("char", "cell");
+                        let image= document.createElement("img");
+                        image.setAttribute("src","images/char.jpg");
+                        image.setAttribute("alt","");
+                        image.setAttribute("class","image")
+                        image.setAttribute("class","image")
+                        div1.appendChild(image);
                     }
                     else if (data[currentMap].boxes.includes(y+(x*data[currentMap].height))){
                         div1.classList.add("b-square");
@@ -43,6 +49,12 @@ fetch("./data.json")
                     else if ( data[currentMap].walls.includes(y+(x*data[currentMap].height))){
                         div1.classList.add("r-square");
                         div1.classList.add("cell");
+                        let image= document.createElement("img");
+                        image.setAttribute("src","images/wall.jpg");
+                        image.setAttribute("alt","");
+                        image.setAttribute("class","image")
+                        image.setAttribute("class","image")
+                        div1.appendChild(image);
                     }
                     else{
                         div1.setAttribute("class","cell");
@@ -50,8 +62,15 @@ fetch("./data.json")
                     section.appendChild(div1);
 
                     if( data[currentMap].goal === y+(x*data[currentMap].height)+rowChecker){
+
                         div1.classList.add("flag");
                         div1.classList.add("cell");
+                        div1.setAttribute("draggable","true");
+                        image.setAttribute("src","images/flag.jpg");
+                        image.setAttribute("alt","");
+                        image.setAttribute("class","image")
+                        image.setAttribute("class","image")
+                        div1.appendChild(image);
                     }
                 }
                 rowChecker++;

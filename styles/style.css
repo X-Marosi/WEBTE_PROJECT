@@ -66,3 +66,6 @@ html {
     background: #a100ff;
     border-radius: 20%;
 }
+section{
+    visibility: hidden;
+}
