@@ -5,13 +5,13 @@ let circle;
 let target;
 let target2;
 let boxTarget;
-let currentMap=0; // for json
+let currentMap = 0;
 let section = document.getElementsByTagName("section")[0];
 let div1;
 let rowChecker=0;
 let b;
 let levelReady;
-let alldragboxes;
+let allDragboxes;
 let forLong ;
 
 
@@ -19,7 +19,7 @@ fetch("./data.json")
     .then(res => res.json())
     .then((data) =>{
         b = document.createElement('button');
-        b.innerHTML="play";
+        b.innerHTML="Start";
         b.id="button"
         b.onclick = function() { loadMap(); }
         document.body.appendChild(b)
@@ -117,10 +117,10 @@ fetch("./data.json")
                 b.innerHTML="Next Level";
                 currentMap++;
                 console.log("EZ ");
-               /* alldragboxes= document.getElementsByClassName("b-square");
-                forLong=alldragboxes.length;
+               /* allDragboxes= document.getElementsByClassName("b-square");
+                forLong=allDragboxes.length;
                 for (let i = 0; i < forLong; i++) {
-                    boxTarget= document.getElementById(alldragboxes[0].id);
+                    boxTarget= document.getElementById(allDragboxes[0].id);
                     boxTarget.setAttribute("class","dropped");
                 }*/
             }

@@ -76,13 +76,23 @@ body {
 #button {
     margin: 2.5rem auto;
     display: flex;
+    padding: 0.2rem 1rem;
     justify-content: center;
-    width: 10rem;
-    height: 3rem;
-    background-color: #e4dcd1;
-    border: 2px solid grey;
-    border-radius: 5px;
+    background-color: #38be38;
+    color: rgb(255, 255, 255);
+    border: transparent 0.1rem solid;
+    border-radius: 0.5rem;
+   /* border-bottom: 0.5rem solid transparent;
+    border-top: 0.5rem solid transparent;
+    border-left: 0;
+    border-right: 0;
+    border-image: url(../images/border.png) 50 stretch;*/
     font-size: 2rem;
     font-weight: bold;
     cursor: pointer;
+}
+
+#button:hover {
+    background-color: #2e9e2e;
+    transition: 0.3s;
 }
