@@ -7,6 +7,7 @@ let target;
 let target2;
 let currentMap = 0;
 let section = document.getElementsByTagName("section")[0];
+let header = document.getElementsByTagName("h1")[0];
 let div1;
 let rowChecker=0;
 let b;
@@ -23,6 +24,7 @@ fetch("./data.json")
 
 
         function loadMap(){
+            header.innerHTML= data[currentMap].name;
             levelReady=0;
             b=document.getElementById("button")
             b.style.visibility="hidden";
