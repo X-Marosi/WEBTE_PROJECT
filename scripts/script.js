@@ -4,22 +4,18 @@ let rowSize;
 let circle;
 let target;
 let target2;
-let boxTarget;
-let currentMap=0; // for json
+let currentMap = 0;
 let section = document.getElementsByTagName("section")[0];
 let div1;
 let rowChecker=0;
 let b;
 let levelReady;
-let alldragboxes;
-let forLong ;
-
 
 fetch("./data.json")
     .then(res => res.json())
     .then((data) =>{
         b = document.createElement('button');
-        b.innerHTML="play";
+        b.innerHTML="Start";
         b.id="button"
         b.onclick = function() { loadMap(); }
         document.body.appendChild(b)
@@ -130,31 +126,31 @@ fetch("./data.json")
 
         document.addEventListener("keydown", function(event) {
 
-            if (event.keyCode === 87 && levelReady==0) {
+            if (event.keyCode === 87 && levelReady === 0) {
                 moveUp();
             }// if A is pressed
-            else if (event.keyCode === 65 && levelReady==0) {
+            else if (event.keyCode === 65 && levelReady === 0) {
                 moveLeft();
             }
             // if s is pressed
-            else if (event.keyCode === 83 && levelReady==0) {
+            else if (event.keyCode === 83 && levelReady === 0) {
                 moveDown();
             }
             // if d is pressed
-            else if (event.keyCode === 68 && levelReady==0) {
+            else if (event.keyCode === 68 && levelReady === 0) {
                 moveRight();
             }
 
-            if (target && target.classList.contains("flag") && !target.classList.contains("b-square") && levelReady==0){
+            if (target && target.classList.contains("flag") && !target.classList.contains("b-square") && levelReady === 0){
                 levelReady=1;
                 b.style.visibility="visible";
                 b.innerHTML="Next Level";
                 currentMap++;
                 console.log("EZ ");
-               /* alldragboxes= document.getElementsByClassName("b-square");
-                forLong=alldragboxes.length;
+               /* allDragboxes= document.getElementsByClassName("b-square");
+                forLong=allDragboxes.length;
                 for (let i = 0; i < forLong; i++) {
-                    boxTarget= document.getElementById(alldragboxes[0].id);
+                    boxTarget= document.getElementById(allDragboxes[0].id);
                     boxTarget.setAttribute("class","dropped");
                 }*/
             }
@@ -168,7 +164,7 @@ fetch("./data.json")
 //Events fired on the drag target
 
 function dragStart(event) {
-        if (levelReady==0){
+        if (levelReady === 0){
         dragOrigin = event.target;}
 
 }

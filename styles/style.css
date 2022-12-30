@@ -7,6 +7,7 @@ html {
 
 body {
     background-color: #e4dcd1;
+
 }
 
 
@@ -16,8 +17,8 @@ body {
     margin: auto;
     width: 15rem;
     height: 15rem;
-    border: 5rem solid #a49d93;
-    /*border-image: url(../images/wall.png) 0 round;*/
+    border: 1rem solid transparent;
+    border-image: url(../images/border.png) 45;
 
 }
 
@@ -27,8 +28,8 @@ body {
     margin: auto;
     width: 20rem;
     height: 20rem;
-    border: gray 30px solid;
-    background: #ececec;
+    border: 1rem solid transparent;
+    border-image: url(../images/border.png) 45;
 }
 
 .grid-5 {
@@ -37,8 +38,8 @@ body {
     margin: auto;
     width: 25rem;
     height: 25rem;
-    border: gray 30px solid;
-    background: #ececec;
+    border: 1rem solid transparent;
+    border-image: url(../images/border.png) 45;
 }
 
 .cell{
@@ -47,7 +48,6 @@ body {
     background-color: #e4dcd1;
     background-image: url(../images/floor.png);
     background-size: 100%;
-
 }
 .b-square {
     cursor: move;
@@ -71,4 +71,28 @@ body {
 
 .flag {
     background-image: url(../images/flag.png);
+}
+
+#button {
+    margin: 2.5rem auto;
+    display: flex;
+    padding: 0.2rem 1rem;
+    justify-content: center;
+    background-color: #38be38;
+    color: rgb(255, 255, 255);
+    border: transparent 0.1rem solid;
+    border-radius: 0.5rem;
+   /* border-bottom: 0.5rem solid transparent;
+    border-top: 0.5rem solid transparent;
+    border-left: 0;
+    border-right: 0;
+    border-image: url(../images/border.png) 50 stretch;*/
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#button:hover {
+    background-color: #2e9e2e;
+    transition: 0.3s;
 }
