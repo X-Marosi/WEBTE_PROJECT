@@ -55,8 +55,10 @@ fetch("./data.json")
                         div1.setAttribute("draggable","true");
                         image.setAttribute("src","images/box.png");
                         image.setAttribute("alt","");
-                        image.setAttribute("class","image")
-                        image.setAttribute("class","image")
+                        image.setAttribute("class","image");
+                        image.setAttribute("class","image");
+                        div1.addEventListener('touchstart', touchStart)
+                        div1.addEventListener('touchend', touchEnd )
                         div1.appendChild(image);
                     }
                     else if ( data[currentMap].walls.includes(y+(x*data[currentMap].height))){
@@ -83,6 +85,38 @@ fetch("./data.json")
                 rowChecker++;
 
             }
+            function touchEnd(event){
+                    console.log(event);
+                    var changedTouch = event.changedTouches[0];
+                    var elem = document.elementFromPoint(changedTouch.clientX, changedTouch.clientY);
+                    let targetId = parseInt(elem.id);
+                    let originId = parseInt(dragOrigin.id);
+                    console.log(originId);
+                    console.log(targetId);
+                    if (dragOrigin.classList.contains("b-square")) {
+                        console.log("yasuo");
+                        if (targetId === originId + 1 || targetId === originId - 1 ||targetId === originId + rowSize + 1 || targetId === originId - rowSize - 1) {
+                            console.log("yasuo2");
+                            if(!elem.classList.contains("char") && !elem.classList.contains("b-square") && !elem.classList.contains("r-square")) {
+                                console.log("yasuo3")
+                                elem.classList.add("b-square");
+                                elem.setAttribute("draggable", "true");
+                                elem.appendChild(dragOrigin.querySelector("img"));
+                                elem.addEventListener('touchstart', touchStart);
+                                elem.addEventListener('touchend', touchEnd );
+                                dragOrigin.classList.remove("b-square");
+                                dragOrigin.setAttribute("draggable", "false");
+                            }
+
+                        }
+                    }
+                }
+            function touchStart(event){
+                console.log(event);
+                if (levelReady==0){
+                    dragOrigin = event.target;}
+            }
+
             cells = document.querySelectorAll(".cell");
             cells.forEach(elem => {
                 elem.addEventListener("dragstart", dragStart); // Fires as soon as the user starts dragging an item - This is where we can define the drag data
@@ -173,6 +207,8 @@ function drop(event) {
                 event.target.setAttribute("draggable", "true");
                 event.target.appendChild(dragOrigin.querySelector("img"));
                 dragOrigin.classList.remove("b-square");
+                event.target.addEventListener('touchstart', touchStart);
+                event.target.addEventListener('touchend', touchEnd );
                 dragOrigin.setAttribute("draggable", "false");
             }
 
