@@ -1,3 +1,4 @@
+
 let cells;
 let dragOrigin;
 let rowSize;
@@ -40,8 +41,10 @@ fetch("./data.json")
                         let image= document.createElement("img");
                         image.setAttribute("src","images/char.png");
                         image.setAttribute("alt","");
-                        image.setAttribute("class","image")
-                        image.setAttribute("class","image")
+                        image.setAttribute("class","image");
+                        image.setAttribute("class","image");
+                        div1.addEventListener('touchstart', touchStart);
+                        div1.addEventListener('touchend', touchEnd );
                         div1.appendChild(image);
                     }
                     else if (data[currentMap].boxes.includes(y+(x*data[currentMap].height))){
@@ -81,6 +84,12 @@ fetch("./data.json")
                 rowChecker++;
 
             }
+            var shakeEvent = new Shake({threshold: 15});
+            shakeEvent.start();
+            window.addEventListener('shake', function(){
+                loadMap();
+            }, false);
+            if(!("ondevicemotion" in window)){alert("Not Supported");}
             function touchEnd(event){
                     var changedTouch = event.changedTouches[0];
                     var elem = document.elementFromPoint(changedTouch.clientX, changedTouch.clientY);
@@ -101,6 +110,33 @@ fetch("./data.json")
 
                         }
                     }
+                else if (dragOrigin.classList.contains("char")) {
+                    if (targetId === originId + 1 || targetId === originId - 1 ||targetId === originId + rowSize + 1 || targetId === originId - rowSize - 1) {
+                        if(!elem.classList.contains("char") && !elem.classList.contains("b-square") && !elem.classList.contains("r-square")) {
+                            elem.classList.add("char");
+                            elem.appendChild(dragOrigin.querySelector("img"));
+                            elem.addEventListener('touchstart', touchStart);
+                            elem.addEventListener('touchend', touchEnd );
+                            dragOrigin.classList.remove("char");
+                            dragOrigin.setAttribute("draggable", "false");
+                        }
+
+                    }
+                        if (elem && elem.classList.contains("flag") && !elem.classList.contains("b-square") && levelReady === 0){
+                            console.log("here");
+                            levelReady=1;
+                            b.style.visibility="visible";
+                            b.innerHTML="Next Level";
+                            currentMap++;
+                            console.log("EZ ");
+                            /* allDragboxes= document.getElementsByClassName("b-square");
+                             forLong=allDragboxes.length;
+                             for (let i = 0; i < forLong; i++) {
+                                 boxTarget= document.getElementById(allDragboxes[0].id);
+                                 boxTarget.setAttribute("class","dropped");
+                             }*/
+                        }
+                }
                 }
             function touchStart(event){
                 if (levelReady==0){
@@ -116,6 +152,54 @@ fetch("./data.json")
                 elem.addEventListener("drop", drop); // Fires when an item is dropped on a valid drop target
             });
 
+        }
+        function dragStart(event) {
+            if (levelReady === 0){
+                dragOrigin = event.target;}
+
+        }
+
+//Events fired on the drop target
+
+        function dragEnter(event) {
+            if(!event.target.classList.contains("dropped")) {
+                event.target.classList.add("droppable-hover");
+            }
+        }
+
+        function dragOver(event) {
+            if(!event.target.classList.contains("dropped")) {
+                event.preventDefault();
+            }
+        }
+
+        function dragLeave(event) {
+            if(!event.target.classList.contains("dropped")) {
+                event.target.classList.remove("droppable-hover");
+            }
+        }
+
+        function drop(event) {
+            //event.preventDefault(); // This is in order to prevent the browser default handling of the data
+            //const draggableElementData = event.dataTransfer.getData("text"); // Get the dragged data. This method will return any data that was set to the same type in the setData() method
+            //const droppableElementData = event.target.getAttribute("data-draggable-id");
+            let targetId = parseInt(event.target.id);
+            let originId = parseInt(dragOrigin.id);
+            console.log("here");
+            if (dragOrigin.classList.contains("b-square")) {
+                if (targetId === originId + 1 || targetId === originId - 1 ||targetId === originId + rowSize + 1 || targetId === originId - rowSize - 1) {
+                    if(!event.target.classList.contains("char") && !event.target.classList.contains("b-square") && !event.target.classList.contains("r-square")) {
+                        event.target.classList.add("b-square");
+                        event.target.setAttribute("draggable", "true");
+                        event.target.appendChild(dragOrigin.querySelector("img"));
+                        dragOrigin.classList.remove("b-square");
+                        event.target.addEventListener('touchstart', touchStart);
+                        event.target.addEventListener('touchend', touchEnd );
+                        dragOrigin.setAttribute("draggable", "false");
+                    }
+
+                }
+            }
         }
 
         document.addEventListener("keydown", function(event) {
@@ -157,54 +241,7 @@ fetch("./data.json")
 
 //Events fired on the drag target
 
-function dragStart(event) {
-        if (levelReady === 0){
-        dragOrigin = event.target;}
 
-}
-
-//Events fired on the drop target
-
-function dragEnter(event) {
-    if(!event.target.classList.contains("dropped")) {
-        event.target.classList.add("droppable-hover");
-    }
-}
-
-function dragOver(event) {
-    if(!event.target.classList.contains("dropped")) {
-        event.preventDefault();
-    }
-}
-
-function dragLeave(event) {
-    if(!event.target.classList.contains("dropped")) {
-        event.target.classList.remove("droppable-hover");
-    }
-}
-
-function drop(event) {
-    //event.preventDefault(); // This is in order to prevent the browser default handling of the data
-    //const draggableElementData = event.dataTransfer.getData("text"); // Get the dragged data. This method will return any data that was set to the same type in the setData() method
-    //const droppableElementData = event.target.getAttribute("data-draggable-id");
-    let targetId = parseInt(event.target.id);
-    let originId = parseInt(dragOrigin.id);
-    console.log("here");
-    if (dragOrigin.classList.contains("b-square")) {
-        if (targetId === originId + 1 || targetId === originId - 1 ||targetId === originId + rowSize + 1 || targetId === originId - rowSize - 1) {
-            if(!event.target.classList.contains("char") && !event.target.classList.contains("b-square") && !event.target.classList.contains("r-square")) {
-                event.target.classList.add("b-square");
-                event.target.setAttribute("draggable", "true");
-                event.target.appendChild(dragOrigin.querySelector("img"));
-                dragOrigin.classList.remove("b-square");
-                event.target.addEventListener('touchstart', touchStart);
-                event.target.addEventListener('touchend', touchEnd );
-                dragOrigin.setAttribute("draggable", "false");
-            }
-
-        }
-    }
-}
 
 function moveRight(){
     circle= document.getElementsByClassName("char");
