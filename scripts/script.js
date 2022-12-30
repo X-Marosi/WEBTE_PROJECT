@@ -29,6 +29,7 @@ fetch("./data.json")
             b=document.getElementById("button")
             b.style.display="none";
             section.visibility="visible";
+            section.classList.remove("grid-"+rowSize);
             rowSize = data[currentMap].width;
             rowChecker = 0;
             section.innerHTML=""
