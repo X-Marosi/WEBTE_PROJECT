@@ -106,3 +106,52 @@ h1{
     margin: 0;
     padding: 1rem;
 }
+
+@media screen and (max-width: 450px) {
+    .grid-5 {
+        margin: auto;
+        width: 20rem;
+        height: 20rem;
+    }
+
+    .grid-5 > .cell {
+        width: 4rem;
+        height: 4rem;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .grid-4 {
+        margin: auto;
+        width: 14rem;
+        height: 14rem;
+    }
+
+    .grid-4 > .cell {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+
+    .grid-5 {
+        width: 14.5rem;
+        height: 14.5rem;
+    }
+
+    .grid-5 > .cell {
+        width: 2.9rem;
+        height: 2.9rem;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .grid-3 {
+        margin: auto;
+        width: 13.5rem;
+        height: 13.5rem;
+    }
+
+    .grid-3 > .cell {
+        width: 4.5rem;
+        height: 4.5rem;
+    }
+}
