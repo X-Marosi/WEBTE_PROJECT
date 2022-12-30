@@ -96,3 +96,13 @@ body {
     background-color: #2e9e2e;
     transition: 0.3s;
 }
+
+h1{
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: Tahoma, sans-serif;
+    color: #000000;
+    margin: 0;
+    padding: 1rem;
+}
