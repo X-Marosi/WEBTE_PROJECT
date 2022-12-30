@@ -27,7 +27,7 @@ fetch("./data.json")
             header.innerHTML= data[currentMap].name;
             levelReady=0;
             b=document.getElementById("button")
-            b.style.visibility="hidden";
+            b.style.display="none";
             section.visibility="visible";
             rowSize = data[currentMap].width;
             rowChecker = 0;
@@ -127,7 +127,7 @@ fetch("./data.json")
                         if (elem && elem.classList.contains("flag") && !elem.classList.contains("b-square") && levelReady === 0){
                             console.log("here");
                             levelReady=1;
-                            b.style.visibility="visible";
+                            b.style.display="flex";
                             b.innerHTML="Next Level";
                             currentMap++;
                             console.log("EZ ");
@@ -223,7 +223,7 @@ fetch("./data.json")
 
             if (target && target.classList.contains("flag") && !target.classList.contains("b-square") && levelReady === 0){
                 levelReady=1;
-                b.style.visibility="visible";
+                b.style.display="flex";
                 b.innerHTML="Next Level";
                 currentMap++;
                 console.log("EZ ");
