@@ -84,7 +84,7 @@ fetch("./data.json")
                 rowChecker++;
 
             }
-            var shakeEvent = new Shake({threshold: 15});
+            var shakeEvent = new Shake({threshold: 10});
             shakeEvent.start();
             window.addEventListener('shake', function(){
                 loadMap();
