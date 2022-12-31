@@ -84,7 +84,7 @@ body {
     display: flex;
     padding: 0.2rem 1rem;
     justify-content: center;
-    background-color: #38be38;
+    background-color: #00ae00;
     color: rgb(255, 255, 255);
     border: transparent 0.1rem solid;
     border-radius: 0.3rem;
@@ -95,7 +95,7 @@ body {
 }
 
 #button:hover {
-    background-color: #2e9e2e;
+    background-color: #009400;
     transition: 0.3s;
 }
 
