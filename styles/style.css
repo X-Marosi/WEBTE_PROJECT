@@ -87,12 +87,7 @@ body {
     background-color: #38be38;
     color: rgb(255, 255, 255);
     border: transparent 0.1rem solid;
-    border-radius: 0.5rem;
-   /* border-bottom: 0.5rem solid transparent;
-    border-top: 0.5rem solid transparent;
-    border-left: 0;
-    border-right: 0;
-    border-image: url(../images/border.png) 50 stretch;*/
+    border-radius: 0.3rem;
     font-family: VPPixel, sans-serif;
     font-size: 2rem;
     font-weight: bold;
@@ -106,11 +101,17 @@ body {
 
 h1{
     text-align: center;
-    font-size: 3rem;
+    font-size: 4rem;
     font-weight: bold;
     color: #000000;
-    margin: 0;
+    margin: auto;
     padding: 1rem;
+    /*
+    border-bottom: 0.5rem solid transparent;
+    border-top: 0.5rem solid transparent;
+    border-left: 0;
+    border-right: 0;
+    border-image: url(../images/border.png) 50 stretch;*/
 }
 
 @media screen and (max-width: 450px) {
