@@ -114,6 +114,12 @@ h1{
     border-image: url(../images/border.png) 50 stretch;*/
 }
 
+#controls {
+    display: flex;
+    justify-content: center;
+    margin: 1rem auto;
+}
+
 @media screen and (max-width: 450px) {
     .grid-5 {
         margin: auto;
@@ -147,6 +153,10 @@ h1{
     .grid-5 > .cell {
         width: 2.9rem;
         height: 2.9rem;
+    }
+
+    #controls{
+        width: 100%;
     }
 }
 
