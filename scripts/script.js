@@ -142,7 +142,7 @@ fetch("./data.json")
                 }
                 }
             function touchStart(event){
-                if (levelReady==0){
+                if (levelReady === 0){
                     dragOrigin = event.target;}
             }
 
