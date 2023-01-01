@@ -2,6 +2,7 @@
 @font-face {
     font-family: 'VPPixel';
     src: url('VPPixel-Simplified.otf');
+    font-display: swap;
 }
 
 
@@ -84,7 +85,7 @@ body {
     display: flex;
     padding: 0.2rem 1rem;
     justify-content: center;
-    background-color: #00ae00;
+    background-color: #00ad00;
     color: rgb(255, 255, 255);
     border: transparent 0.1rem solid;
     border-radius: 0.3rem;
@@ -119,6 +120,7 @@ h1{
     justify-content: center;
     margin: 1rem auto;
 }
+
 
 @media screen and (max-width: 450px) {
     .grid-5 {

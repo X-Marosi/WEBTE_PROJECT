@@ -1,0 +1,20 @@
+{
+  "name": "RoBOX",
+  "short_name": "RoBOX",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#e4dcd1",
+  "theme_color": "#e4dcd1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/icon512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+
+
+  "version": "1.0",
+  "description": "RoBOX is a web game with drag and drop elements."
+}
