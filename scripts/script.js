@@ -1,4 +1,3 @@
-
 let cells;
 let dragOrigin;
 let rowSize;
@@ -38,6 +37,7 @@ fetch("./data.json")
                 h.style.display="none";
                 b.style.display="none";
                 section.style.display="none";
+                document.getElementById("hint").style.display="none";
                 document.getElementById("controls").style.display="none";
                 window.localStorage.clear();
                 return;
