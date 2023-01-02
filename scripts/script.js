@@ -18,6 +18,7 @@ let levelNumber;
 let r;
 let h;
 let s;
+
 fetch("./data.json")
     .then(res => res.json())
     .then((data) =>{
@@ -31,7 +32,7 @@ fetch("./data.json")
         b.id="button"
         b.onclick = function() {
             if (levels===0){
-                header.innerHTML="CONGRATS. YOU HAVE DONE ALL LEVELS";
+                header.innerHTML="Congratulations! You beat all the levels!";
                 r.style.display="none";
                 s.style.display="none";
                 h.style.display="none";
@@ -51,7 +52,7 @@ fetch("./data.json")
             randomList.splice(randomLevel,1);
             localStorage.setItem("maps", JSON.stringify(randomList));}
         r = document.createElement('button');
-        r.innerHTML="Restart Level";
+        r.innerHTML="Restart";
         r.id="buttonRestart";
         r.style.display="none";
         r.onclick = function() {section.innerHTML="" ;
@@ -67,8 +68,8 @@ fetch("./data.json")
             document.getElementById("hint").src=data[currentMap].path;
             console.log(data[currentMap].path);
             document.getElementById("hint").style.display="flex";
-            document.getElementById("hint").width=200;
-            document.getElementById("hint").height=250;
+            //document.getElementById("hint").width=200;
+            //document.getElementById("hint").height=250;
         }
         s = document.createElement('button');
         s.innerHTML="Solve";

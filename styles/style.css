@@ -15,6 +15,7 @@ html {
 
 body {
     background-color: #e4dcd1;
+    margin: 0;
 }
 
 
@@ -85,7 +86,7 @@ body {
     margin: 1rem auto;
 }
 #buttonSolve {
-    margin: 2.5rem auto;
+    margin: 0.5rem auto;
     display: flex;
     padding: 0.2rem 1rem;
     justify-content: left;
@@ -99,7 +100,7 @@ body {
     cursor: pointer;
 }
 #buttonHint {
-     margin: 2.5rem auto;
+     margin: 0.5rem auto;
      display: flex;
      padding: 0.2rem 1rem;
      justify-content: left;
@@ -113,11 +114,11 @@ body {
      cursor: pointer;
  }
 #buttonRestart {
-    margin: 2.5rem auto;
+    margin: 0.5rem auto;
     display: flex;
     padding: 0.2rem 1rem;
     justify-content: center;
-    background-color: #0c308c;
+    background-color: #8c0c23;
     color: rgb(255, 255, 255);
     border: transparent 0.1rem solid;
     border-radius: 0.3rem;
@@ -127,7 +128,7 @@ body {
     cursor: pointer;
 }
 #button {
-    margin: 2.5rem auto;
+    margin: 0.5rem auto;
     display: flex;
     padding: 0.2rem 1rem;
     justify-content: center;
@@ -149,10 +150,8 @@ body {
 h1{
     text-align: center;
     font-size: 4rem;
-    font-weight: bold;
     color: #000000;
-    margin: auto;
-    padding: 1rem;
+    margin: 0.5rem auto;
     /*
     border-bottom: 0.5rem solid transparent;
     border-top: 0.5rem solid transparent;
@@ -161,6 +160,12 @@ h1{
     border-image: url(../images/border.png) 50 stretch;*/
 }
 
+@media screen and (max-width: 450px) {
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
 
 @media screen and (max-width: 450px) {
     .grid-5 {
