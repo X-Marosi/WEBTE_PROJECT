@@ -79,7 +79,51 @@ body {
 .flag {
     background-image: url(../images/flag.png);
 }
-
+#hint{
+    display: none;
+}
+#buttonSolve {
+    margin: 2.5rem auto;
+    display: flex;
+    padding: 0.2rem 1rem;
+    justify-content: left;
+    background-color: #7b0c8c;
+    color: rgb(255, 255, 255);
+    border: transparent 0.1rem solid;
+    border-radius: 0.3rem;
+    font-family: VPPixel, sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+#buttonHint {
+     margin: 2.5rem auto;
+     display: flex;
+     padding: 0.2rem 1rem;
+     justify-content: left;
+     background-color: #0c308c;
+     color: rgb(255, 255, 255);
+     border: transparent 0.1rem solid;
+     border-radius: 0.3rem;
+     font-family: VPPixel, sans-serif;
+     font-size: 2rem;
+     font-weight: bold;
+     cursor: pointer;
+ }
+#buttonRestart {
+    margin: 2.5rem auto;
+    display: flex;
+    padding: 0.2rem 1rem;
+    justify-content: center;
+    background-color: #0c308c;
+    color: rgb(255, 255, 255);
+    border: transparent 0.1rem solid;
+    border-radius: 0.3rem;
+    font-family: VPPixel, sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
 #button {
     margin: 2.5rem auto;
     display: flex;

@@ -1,11 +1,12 @@
 {
   "name": "RoBOX",
   "short_name": "RoBOX",
-  "start_url": "/index.html",
+  "start_url": "https://webte1.fei.stuba.sk/~xcsoka/final/",
   "display": "standalone",
   "background_color": "#e4dcd1",
   "theme_color": "#e4dcd1",
   "orientation": "portrait-primary",
+  "prefer_related_applications": "false",
   "icons": [
     {
       "src": "images/icon512.png",
@@ -14,8 +15,6 @@
       "purpose": "any maskable"
     }
   ],
-
-
   "version": "1.0",
   "description": "RoBOX is a web game with drag and drop elements."
 }
