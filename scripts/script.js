@@ -21,7 +21,7 @@ let s;
 fetch("./data.json")
     .then(res => res.json())
     .then((data) =>{
-
+        document.getElementById("hint").style.display="flex";
         levels=data.length;
         for (let x=0;x<data.length;x++){
             randomList.push(x);
@@ -67,6 +67,8 @@ fetch("./data.json")
             document.getElementById("hint").src=data[currentMap].path;
             console.log(data[currentMap].path);
             document.getElementById("hint").style.display="flex";
+            document.getElementById("hint").width=200;
+            document.getElementById("hint").height=250;
         }
         s = document.createElement('button');
         s.innerHTML="Solve";

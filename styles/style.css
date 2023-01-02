@@ -81,6 +81,8 @@ body {
 }
 #hint{
     display: none;
+    justify-content: center;
+    margin: 1rem auto;
 }
 #buttonSolve {
     margin: 2.5rem auto;
@@ -157,12 +159,6 @@ h1{
     border-left: 0;
     border-right: 0;
     border-image: url(../images/border.png) 50 stretch;*/
-}
-
-#controls {
-    display: flex;
-    justify-content: center;
-    margin: 1rem auto;
 }
 
 
