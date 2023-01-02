@@ -43,7 +43,7 @@ fetch("./data.json")
                 window.localStorage.clear();
                 return;
             }
-            console.log(levels);
+            //console.log(levels);
             randomLevel=Math.floor(Math.random() * levels);
             currentMap=randomList[ randomLevel];
             document.getElementById("hint").style.display="none";
@@ -66,7 +66,7 @@ fetch("./data.json")
         h.style.display="none";
         h.onclick = function() {
             document.getElementById("hint").src=data[currentMap].path;
-            console.log(data[currentMap].path);
+            //console.log(data[currentMap].path);
             document.getElementById("hint").style.display="flex";
             //document.getElementById("hint").width=200;
             //document.getElementById("hint").height=250;
@@ -136,7 +136,7 @@ fetch("./data.json")
 
 
         function loadMap(){
-            console.log(levels)
+            //console.log(levels)
             r.style.display="flex";
             s.style.display="flex";
             h.style.display="flex";
@@ -375,9 +375,9 @@ fetch("./data.json")
             currentMap=localStorage.getItem("currentMap");
             randomList=JSON.parse(localStorage.maps);
             levels= randomList.length;
-            console.log(currentMap)
-            console.log(randomList)
-            console.log(levels);
+            //console.log(currentMap)
+            //console.log(randomList)
+            //console.log(levels);
                 loadMap();
         }
     });
