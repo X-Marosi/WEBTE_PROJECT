@@ -18,6 +18,7 @@ let levelNumber;
 let r;
 let h;
 let s;
+let hide=0;
 
 fetch("./data.json")
     .then(res => res.json())
@@ -31,6 +32,10 @@ fetch("./data.json")
         b.innerHTML="Start";
         b.id="button"
         b.onclick = function() {
+            h.innerHTML="Show Hint";
+            hide=0;
+            r.style.display="flex";
+            window.localStorage.clear();
             if (levels===0){
                 header.innerHTML="Congratulations! You beat all the levels!";
                 r.style.display="none";
@@ -65,9 +70,25 @@ fetch("./data.json")
         h.id="buttonHint";
         h.style.display="none";
         h.onclick = function() {
+            if (hide ===0){
             document.getElementById("hint").src=data[currentMap].path;
+            h.innerHTML="Hide hint";
             //console.log(data[currentMap].path);
             document.getElementById("hint").style.display="flex";
+            r.style.display="none";
+            s.style.display="none";
+            hide=1;
+            }
+            else if (hide ===1){
+                document.getElementById("hint").src=data[currentMap].path;
+                h.innerHTML="Show hint";
+                //console.log(data[currentMap].path);
+                document.getElementById("hint").style.display="none";
+                r.style.display="flex";
+                s.style.display="flex";
+                hide=0;
+            }
+
             //document.getElementById("hint").width=200;
             //document.getElementById("hint").height=250;
         }
@@ -76,6 +97,9 @@ fetch("./data.json")
         s.id="buttonSolve";
         s.style.display="none";
         s.onclick = function() {
+            h.style.display="none";
+            s.style.display="none";
+            levelReady=1;
             section.innerHTML="";
             rowChecker=0;
             for (let x=0;x<data[currentMap].height;x++){
@@ -246,7 +270,11 @@ fetch("./data.json")
                     }
                         if (elem && elem.classList.contains("flag") && !elem.classList.contains("b-square") && levelReady === 0){
                             levelReady=1;
+                            h.style.display="none";
+                            r.style.display="flex";
+                            document.getElementById("hint").style.display="none";
                             if(levels===0){
+                                document.getElementById("hint").style.display="none";
                                 header.innerHTML="CONGRATS. YOU HAVE DONE ALL LEVELS";
                                 r.style.display="none";
                                 s.style.display="none";
@@ -349,12 +377,15 @@ fetch("./data.json")
 
             if (target && target.classList.contains("flag") && !target.classList.contains("b-square") && levelReady === 0){
                 levelReady=1;
+                h.style.display="none";
+                r.style.display="flex";
+                document.getElementById("hint").style.display="none";
                 if(levels===0){
+                    document.getElementById("hint").style.display="none";
                     header.innerHTML="CONGRATS. YOU HAVE DONE ALL LEVELS";
                     r.style.display="none";
                     s.style.display="none";
                     h.style.display="none";
-                    section.style.display="none";
                     section.style.display="none";
                     window.localStorage.clear();
                     document.getElementById("controls").style.display="none";
@@ -372,6 +403,8 @@ fetch("./data.json")
 
         });
         if (localStorage.getItem("isStorage") === "true") {
+            document.getElementById("hint").style.display="none";
+
             currentMap=localStorage.getItem("currentMap");
             randomList=JSON.parse(localStorage.maps);
             levels= randomList.length;
@@ -442,4 +475,8 @@ function classChanger(){
     image.setAttribute("class","image")
     target.classList.add("char");
     target.appendChild(image)
+}
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    // true for mobile device
+    document.getElementById("hint").src="./images/controls_mobile.png"
 }
