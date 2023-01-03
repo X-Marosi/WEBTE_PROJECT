@@ -60,7 +60,10 @@ fetch("./data.json")
         r.innerHTML="Restart";
         r.id="buttonRestart";
         r.style.display="none";
-        r.onclick = function() {section.innerHTML="" ;
+        r.onclick = function() {
+            h.innerHTML="Show hint";
+            hide=0;
+            section.innerHTML="" ;
             b.style.display="none";
             document.getElementById("hint").style.display="none";
         loadMap();
